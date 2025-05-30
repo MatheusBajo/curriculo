@@ -64,7 +64,7 @@ export default function App() {
             {/* Certificados */}
             {CERTIFICADOS.map(cert => (
                 <section
-                    key={import.meta.env.BASE_URL + cert.src}
+                    key={cert.src}
                     className="flex justify-center items-stretch
                      w-full md:w-dvw
                      h-auto   md:h-dvh
