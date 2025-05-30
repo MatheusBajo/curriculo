@@ -162,28 +162,28 @@ export default function Main() {
                         <li className="flex-1 flex items-center gap-2">
                             <span
                                 className="inline-flex items-center justify-center size-[14px] bg-background rounded-[2px]">
-                              <img src="/linkedin-in-brands.svg" alt="LinkedIn" className="px-[3px] invert"/>
+                              <img src={import.meta.env.BASE_URL + "/linkedin-in-brands.svg"} alt="LinkedIn" className="px-[3px] invert"/>
                             </span>
                             <span className="text-[10pt] font-bold">Matheus Bajo</span>
                         </li>
                         <li className="flex-1 flex items-center gap-2">
                             <span
                                 className="inline-flex items-center justify-center size-[14px] bg-background rounded-[2px]">
-                              <img src="/envelope-solid.svg" alt="Email" className="px-[3px] invert"/>
+                              <img src={import.meta.env.BASE_URL + "/envelope-solid.svg"} alt="Email" className="px-[3px] invert"/>
                             </span>
                             <span className="text-[10pt] font-bold">matheusbajo@gmail.com</span>
                         </li>
                         <li className="flex-1 flex items-center gap-2">
                             <span
                                 className="inline-flex items-center justify-center size-[14px] bg-background rounded-[2px]">
-                              <img src="/whatsapp-brands.svg" alt="WhatsApp" className="px-[3px] invert"/>
+                              <img src={import.meta.env.BASE_URL + "/whatsapp-brands.svg"} alt="WhatsApp" className="px-[3px] invert"/>
                             </span>
                             <span className="text-[10pt] font-bold">(11) 9 5413-9973</span>
                         </li>
                         <li className="flex-1 flex items-center gap-2">
                             <span
                                 className="inline-flex items-center justify-center size-[14px] bg-background rounded-[2px]">
-                              <img src="/github-brands.svg" alt="Instagram" className="px-[3px] invert"/>
+                              <img src={import.meta.env.BASE_URL + "/github-brands.svg"} alt="Instagram" className="px-[3px] invert"/>
                             </span>
                             <span className="text-[10pt] font-bold">MatheusBajo</span>
                         </li>

@@ -3,9 +3,36 @@ import Main  from './pages/Main';
 import { PAGE_W, PAGE_H } from './utils/pageConstants';
 import FittedPdf from './FittedPdf';
 import { CERTIFICADOS } from './utils/certificates';
-import './utils/pdfWorker';          // mantém o worker
+import './utils/pdfWorker';
+import {useEffect} from "react";          // mantém o worker
+import { gsap } from 'gsap'          // coloque no topo de TODO arquivo que use gsap
+
 
 export default function App() {
+
+    useEffect(() => {
+        // empurra tudo pro fim e força repaint síncrono
+        const finish = () => {
+            gsap.globalTimeline.pause().progress(1) // chega a 100 %
+            gsap.ticker.flush()                     // aplica estilos imediatamente
+        }
+
+        // Chromium
+        window.addEventListener('beforeprint', finish)
+
+        // Safari + Firefox
+        const mql = window.matchMedia('print')
+        const mqHandler = (e: MediaQueryListEvent) => e.matches && finish()
+        // addEventListener existe no Chrome 111+, Safari 14.1+, Firefox 103+
+        mql.addEventListener?.('change', mqHandler) || mql.addListener(mqHandler)
+
+        return () => {
+            window.removeEventListener('beforeprint', finish)
+            mql.removeEventListener?.('change', mqHandler) || mql.removeListener(mqHandler)
+        }
+    }, [])
+
+
     return (
         <main className="flex flex-col gap-2 print:gap-0">
             {/* Currículo */}
@@ -37,7 +64,7 @@ export default function App() {
             {/* Certificados */}
             {CERTIFICADOS.map(cert => (
                 <section
-                    key={cert.src}
+                    key={import.meta.env.BASE_URL + cert.src}
                     className="flex justify-center items-stretch
                      w-full md:w-dvw
                      h-auto   md:h-dvh

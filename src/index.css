@@ -13,6 +13,32 @@
 }
 
 @media print {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    /* qualquer classe usada nos tweens */
+    .gsap-line,
+    .gsap-word,
+    .skills-row,
+    .job-left p,
+    .section-exp {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    /* se overflow cortar coisa, mate aqui */
+    aside,
+    main,
+    .page,
+    svg,
+    foreignObject {
+        overflow: visible !important;
+    }
+}
+
+
+
+@media print {
     body {
         background: #fff !important;           /* some o azul-escuro */
     }

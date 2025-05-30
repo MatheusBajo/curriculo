@@ -90,7 +90,7 @@ export default function Aside() {
         >
             <header className="w-full flex min-h-[220px] items-center justify-center">
                 <img
-                    src="/perfil-picture.png"
+                    src={import.meta.env.BASE_URL + "/perfil-picture.png"}
                     alt="Foto de perfil"
                     className="size-[150px] rounded-full border-[6px] border-white shadow-2xl"
                 />
