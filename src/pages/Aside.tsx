@@ -2,9 +2,14 @@
 import {useEffect, useRef} from "react";
 import { gsap } from 'gsap'
 import SplitText from 'gsap/SplitText'
+import ReactMarkdown from 'react-markdown'
+import resume from '../data/resume.json'
+import type { ResumeData } from '../utils/types'
 
 export default function Aside() {
     const asideRef = useRef<HTMLElement>(null);
+    const data: ResumeData['aside'] = (resume as ResumeData).aside;
+
 
     useEffect(() => {
         if (!asideRef.current) return;
@@ -90,80 +95,52 @@ export default function Aside() {
         >
             <header className="w-full flex min-h-[220px] items-center justify-center">
                 <img
-                    src={import.meta.env.BASE_URL + "/perfil-picture.png"}
+                    src={import.meta.env.BASE_URL + data.profilePicture}
                     alt="Foto de perfil"
                     className="size-[150px] rounded-full border-[6px] border-white shadow-2xl"
                 />
             </header>
             <div className="flex flex-col gap-6 px-6 overflow-y-hidden">
-
-                {/* Sobre Mim */}
-                <section>
-                    <h2 className="">Sobre Mim</h2>
-
-                    <p className="">
-                        Graduando em <strong>Análise e Desenvolvimento de Sistemas</strong> (UAM) e formado em
-                        <strong> Técnico em Informática</strong>. Dedico-me principalmente a
-                        <strong> Java/Spring/JavaFX</strong>, <strong>React com TypeScript & Tailwind</strong>,
-                        criando desde aplicações desktop a sistemas e sites completos.
-                        Sou curioso, colaborativo e sempre procuro agregar valor onde atuo, compartilhando conhecimento
-                        e, mantendo a mente aberta
-                        para novas experiências e ideias.
-                    </p>
-                </section>
-
-
-                {/* Detalhes Pessoais */}
-                <section>
-                    <h2 className="">
-                        Detalhes Pessoais
-                    </h2>
-                    <ul className="">
-                        <li><strong>Nome:</strong> Matheus Yoshiro de Santana Bajo</li>
-                        <li><strong>End.:</strong> R. José Salvador Pazzobom, 345 - Jaguaribe, Osasco, SP - 06050-070
-                        </li>
-                        <li><strong>Nacionalidade:</strong> Brasileiro, Natural de São Paulo</li>
-                        <li><strong>Estado Civil:</strong> Solteiro</li>
-                        <li><strong>Gênero:</strong> Masculino</li>
-                        <li><strong>Data de Nascimento:</strong> 24/01/2007</li>
-                    </ul>
-                </section>
-
-                {/*Contato*/}
-                <section>
-                    <h2 className="">
-                        Contato
-                    </h2>
-                    <ul>
-                        <li><strong>WhatsApp:</strong> <a
-                            className="underline print:no-underline text-blue-300 print:text-white/90"
-                            href="https://wa.me/5511954139973" target="_blank">(11) 9 5413-9973</a></li>
-                        <li><strong>E-mail:</strong> <a
-                            className="underline print:no-underline text-blue-300 print:text-white/90"
-                            href="mailto:matheusbajo@gmail.com">matheusbajo@gmail.com</a></li>
-                        <li><strong>Instagram:</strong> <a
-                            className="underline print:no-underline text-blue-300 print:text-white/90"
-                            href="https://www.instagram.com/yoshiro_.bajo" target="_blank">@yoshiro_.bajo</a></li>
-                        <li><strong>LinkedIn:</strong> <a
-                            className="underline print:no-underline text-blue-300 print:text-white/90"
-                            href="https://www.linkedin.com/in/matheusbajo" target="_blank">Matheus Bajo</a></li>
-                        <li><strong>GitHub:</strong> <a
-                            className="underline print:no-underline text-blue-300 print:text-white/90"
-                            href="https://github.com/MatheusBajo" target="_blank">MatheusBajo</a></li>
-                    </ul>
-                </section>
-
-                {/* Hobbies e Interesses */}
-                <section>
-                    <h2 className="text-lg font-extrabold uppercase">Hobbies e Interesses</h2>
-
-                    <p className="text-[9pt] font-medium leading-snug text-justify">
-                        Apaixonado por esportes: pratico <strong>atletismo</strong> há 6&nbsp;anos e sigo uma rotina de
-                        <strong> musculação</strong> há 1&nbsp;ano e meio, sempre alinhada a uma boa alimentação.
-                        Curto jogar <strong>futebol</strong> pra relaxar e manter o cárdio em dia. Nas horas livres,
-                        toco <strong>violão há 9&nbsp;anos!</strong> Um hobby que continuo aperfeiçoando até hoje.
-                    </p>
-                </section>
+                {data.sections.map(sec => (
+                    <section key={sec.title}>
+                        <h2 className={sec.title === 'Hobbies e Interesses' ? 'text-lg font-extrabold uppercase' : ''}>{sec.title}</h2>
+                        {sec.paragraph && (
+                            <ReactMarkdown
+                                components={{
+                                    p: ({...props}) => (
+                                        <p
+                                            className={sec.title === 'Hobbies e Interesses' ? 'text-[9pt] font-medium leading-snug text-justify' : ''}
+                                            {...props}
+                                        />
+                                    ),
+                                    strong: ({...props}) => <strong className="font-bold" {...props} />,
+                                }}
+                            >
+                                {sec.paragraph}
+                            </ReactMarkdown>
+                        )}
+                        {sec.list && (
+                            <ul className="">
+                                {sec.list.map(item => (
+                                    <li key={item.label}>
+                                        <strong>{item.label}:</strong>{' '}
+                                        {item.url ? (
+                                            <a
+                                                className="underline print:no-underline text-blue-300 print:text-white/90"
+                                                href={item.url}
+                                                target="_blank"
+                                            >
+                                                {item.value}
+                                            </a>
+                                        ) : (
+                                            item.value
+                                        )}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </section>
+                ))}
 
 
             </div>

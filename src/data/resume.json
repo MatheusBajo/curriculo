@@ -1,0 +1,178 @@
+{
+  "aside": {
+    "profilePicture": "perfil-picture.png",
+    "sections": [
+      {
+        "title": "Sobre Mim",
+        "paragraph": "Graduando em **Análise e Desenvolvimento de Sistemas** (UAM) e formado em **Técnico em Informática**. Dedico-me principalmente a **Java/Spring/JavaFX**, **React com TypeScript & Tailwind**, criando desde aplicações desktop a sistemas e sites completos. Sou curioso, colaborativo e sempre procuro agregar valor onde atuo, compartilhando conhecimento e, mantendo a mente aberta para novas experiências e ideias."
+      },
+      {
+        "title": "Detalhes Pessoais",
+        "list": [
+          {
+            "label": "Nome",
+            "value": "Matheus Yoshiro de Santana Bajo"
+          },
+          {
+            "label": "End.",
+            "value": "R. José Salvador Pazzobom, 345 - Jaguaribe, Osasco, SP - 06050-070"
+          },
+          {
+            "label": "Nacionalidade",
+            "value": "Brasileiro, Natural de São Paulo"
+          },
+          {
+            "label": "Estado Civil",
+            "value": "Solteiro"
+          },
+          {
+            "label": "Gênero",
+            "value": "Masculino"
+          },
+          {
+            "label": "Data de Nascimento",
+            "value": "24/01/2007"
+          }
+        ]
+      },
+      {
+        "title": "Contato",
+        "list": [
+          {
+            "label": "WhatsApp",
+            "value": "(11) 9 5413-9973",
+            "url": "https://wa.me/5511954139973"
+          },
+          {
+            "label": "E-mail",
+            "value": "matheusbajo@gmail.com",
+            "url": "mailto:matheusbajo@gmail.com"
+          },
+          {
+            "label": "Instagram",
+            "value": "@yoshiro_.bajo",
+            "url": "https://www.instagram.com/yoshiro_.bajo"
+          },
+          {
+            "label": "LinkedIn",
+            "value": "Matheus Bajo",
+            "url": "https://www.linkedin.com/in/matheusbajo"
+          },
+          {
+            "label": "GitHub",
+            "value": "MatheusBajo",
+            "url": "https://github.com/MatheusBajo"
+          }
+        ]
+      },
+      {
+        "title": "Hobbies e Interesses",
+        "paragraph": "Apaixonado por esportes: pratico **atletismo** há 6 anos e sigo uma rotina de **musculação** há 1 ano e meio, sempre alinhada a uma boa alimentação. Curto jogar **futebol** pra relaxar e manter o cárdio em dia. Nas horas livres, toco **violão há 9 anos!** Um hobby que continuo aperfeiçoando até hoje."
+      }
+    ]
+  },
+  "main": {
+    "header": {
+      "nameLines": [
+        [
+          "Matheus",
+          "Yoshiro"
+        ],
+        [
+          "de",
+          "Santana",
+          "Bajo"
+        ]
+      ],
+      "role": [
+        "Técnico",
+        "em",
+        "Informática"
+      ],
+      "contacts": [
+        {
+          "icon": "linkedin-in-brands.svg",
+          "label": "Matheus Bajo"
+        },
+        {
+          "icon": "envelope-solid.svg",
+          "label": "matheusbajo@gmail.com"
+        },
+        {
+          "icon": "whatsapp-brands.svg",
+          "label": "(11) 9 5413-9973"
+        },
+        {
+          "icon": "github-brands.svg",
+          "label": "MatheusBajo"
+        }
+      ]
+    },
+    "experiences": [
+      {
+        "code": "1.0 Canal YouTube",
+        "location": "Online",
+        "period": "2015 – 2020",
+        "title": "Criador de Conteúdo",
+        "paragraph": "Iniciei meu canal de projetos eletrônicos aos **8 anos** (2015) e atingi mais de ** 40 mil visualizações** e **900 inscritos**. Essa experiência consolidou minhas habilidades de **roteiro, gravação, edição de vídeo e comunicação**. Encerrei o canal em 2020, mas sigo usando essas técnicas em edições pontuais."
+      },
+      {
+        "code": "2.0 Locação de Games",
+        "location": "Osasco – São Paulo",
+        "period": "2019 – Presente",
+        "title": "Desenvolvedor Full Stack / Técnico de TI",
+        "paragraph": "Criei sistema de orçamentos em **JavaFX + MySQL** que reduziu o tempo de **5 min** para **~30s**, gerando até 5 propostas diferentes. Desenvolvi site responsivo em ** React TSX + Tailwind + GSAP** e configurei um ** servidor** com **Windows Server 2019** e desenvolvi um **sistema** em grupo com **Spring Boot** para melhor controle logístico e financeiro. Ofereço suporte técnico e faço manutenção diária em PCs, redes e fliperamas."
+      },
+      {
+        "code": "2.1 WeFlying",
+        "location": "Freelancer",
+        "period": "2024",
+        "title": "Desenvolvedor Front End",
+        "paragraph": "Fiz um site para a empresa de marketing **WeFlying** usando **Vite Vanilla + Tailwind**, focando em leads, performance e SEO completo."
+      },
+      {
+        "code": "2.2 Gleide Fashion Hair",
+        "location": "Osasco – São Paulo",
+        "period": "2024 – Presente",
+        "title": "Desenvolvedor Web",
+        "paragraph": "Criei landing page responsiva e dou manutenção básica em HTML, CSS e JavaScript. Auxilio em campanhas de Google Ads."
+      }
+    ],
+    "qualifications": "Desenvolvedor full stack com ênfase em **Java / Spring Boot ** no back-end e **JavaFX, React com TypeScript e Tailwind** no front-end. Experiência com **modelagem MySQL**, APIs REST e versionamento **Git / GitHub**. Conhecimento sólido em ** HTML, CSS, JavaScript/TypeScript**. Nos cursos da Alura aprofundei **orientação a objetos** (POO) **em Java**, construção de APIs REST e boas práticas de arquitetura com Spring Boot. Também atuo como gestor de tráfego com noções de **Google Ads** e **Facebook Ads**. **Investidor** ativo em **ações** desde 2020, focado em visão de longo prazo.",
+    "skills": [
+      {
+        "label": "HTML & CSS",
+        "pct": "w-[95%]"
+      },
+      {
+        "label": "Tailwind CSS",
+        "pct": "w-[95%]"
+      },
+      {
+        "label": "React & TypeScript",
+        "pct": "w-[85%]"
+      },
+      {
+        "label": "Java & Spring Boot",
+        "pct": "w-[60%]"
+      },
+      {
+        "label": "Manutenção",
+        "pct": "w-[80%]"
+      },
+      {
+        "label": "Google Ads & SEO",
+        "pct": "w-[50%]"
+      },
+      {
+        "label": "Git / GitHub",
+        "pct": "w-[40%]"
+      },
+      {
+        "label": "MySQL / SQL",
+        "pct": "w-[30%]"
+      }
+    ],
+    "footerDate": "26/05/2025"
+  }
+}
