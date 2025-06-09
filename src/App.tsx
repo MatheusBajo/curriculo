@@ -24,11 +24,19 @@ export default function App() {
         const mql = window.matchMedia('print')
         const mqHandler = (e: MediaQueryListEvent) => e.matches && finish()
         // addEventListener existe no Chrome 111+, Safari 14.1+, Firefox 103+
-        mql.addEventListener?.('change', mqHandler) || mql.addListener(mqHandler)
+        if (mql.addEventListener) {
+            mql.addEventListener('change', mqHandler)
+        } else {
+            mql.addListener(mqHandler)
+        }
 
         return () => {
             window.removeEventListener('beforeprint', finish)
-            mql.removeEventListener?.('change', mqHandler) || mql.removeListener(mqHandler)
+            if (mql.removeEventListener) {
+                mql.removeEventListener('change', mqHandler)
+            } else {
+                mql.removeListener(mqHandler)
+            }
         }
     }, [])
 
