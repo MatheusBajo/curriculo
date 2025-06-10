@@ -242,10 +242,14 @@ export default function Main() {
                         <div key={label} className="flex items-center gap-4">
                             <span className="text-gray-800 font-medium min-w-[110px]">{label}</span>
                             <div className="flex-1 h-2 bg-[#dcdcdc] rounded-full overflow-hidden">
-                                <div className={`h-full bg-[#304e58] ${pct}`}></div>
+                                <div
+                                    className="h-full bg-[#304e58]"
+                                    style={{ width: pct }}
+                                />
                             </div>
                         </div>
                     ))}
+
                 </div>
             </section>
 
