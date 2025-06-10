@@ -4,11 +4,14 @@ import { PAGE_W, PAGE_H } from './utils/pageConstants';
 import FittedPdf from './FittedPdf';
 import { CERTIFICADOS } from './utils/certificates';
 import './utils/pdfWorker';
-import {useEffect} from "react";          // mantém o worker
+import {useEffect, useState} from "react";          // mantém o worker
 import { gsap } from 'gsap'          // coloque no topo de TODO arquivo que use gsap
+import CleanResume from './pages/CleanResume';
+import type { Variant } from './pages/Aside';
 
 
 export default function App() {
+    const [variant, setVariant] = useState<Variant>('secure');
 
     useEffect(() => {
         // empurra tudo pro fim e força repaint síncrono
@@ -43,31 +46,40 @@ export default function App() {
 
     return (
         <main className="flex flex-col gap-2 print:gap-0">
+            <div className="fixed top-2 right-2 z-50 flex gap-2">
+                <button onClick={() => setVariant('clean')} className="px-2 py-1 bg-white text-black border">Clean</button>
+                <button onClick={() => setVariant('secure')} className="px-2 py-1 bg-white text-black border">Segura</button>
+            </div>
+
             {/* Currículo */}
-            <section
-                className="flex justify-center items-stretch
+            {variant === 'clean' ? (
+                <CleanResume />
+            ) : (
+                <section
+                    className="flex justify-center items-stretch
                    w-full md:w-dvw
                    h-auto   md:h-dvh
                    max-w-100dvw max-h-dvh
                    print:break-after-page"
-            >
-                <svg
-                    /* largura sempre 100%; altura só cresce acima de md */
-                    className="w-full h-auto md:h-full"
-                    viewBox={`0 0 ${PAGE_W} ${PAGE_H}`}
-                    preserveAspectRatio="xMidYMid meet"
                 >
-                    <foreignObject x="0" y="0" width={PAGE_W} height={PAGE_H}>
-                        <div
-                            xmlns="http://www.w3.org/1999/xhtml"
-                            className="page flex w-full h-full bg-white"
-                        >
-                            <Aside />
-                            <Main />
-                        </div>
-                    </foreignObject>
-                </svg>
-            </section>
+                    <svg
+                        /* largura sempre 100%; altura só cresce acima de md */
+                        className="w-full h-auto md:h-full"
+                        viewBox={`0 0 ${PAGE_W} ${PAGE_H}`}
+                        preserveAspectRatio="xMidYMid meet"
+                    >
+                        <foreignObject x="0" y="0" width={PAGE_W} height={PAGE_H}>
+                            <div
+                                xmlns="http://www.w3.org/1999/xhtml"
+                                className="page flex w-full h-full bg-white"
+                            >
+                                <Aside variant={variant} />
+                                <Main variant={variant} />
+                            </div>
+                        </foreignObject>
+                    </svg>
+                </section>
+            )}
 
             {/* Certificados */}
             {CERTIFICADOS.map(cert => (
