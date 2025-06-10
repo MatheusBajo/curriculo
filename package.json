@@ -11,7 +11,8 @@
     "deploy": "gh-pages -d build",
     "lint": "eslint .",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:variants": "node scripts/generate.cjs"
   },
   "dependencies": {
     "gsap": "^3.13.0",
