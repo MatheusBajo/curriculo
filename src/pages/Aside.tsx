@@ -6,8 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import resume from '../data/resume.json'
 import type { ResumeData } from '../utils/types'
 
-export type Variant = 'secure' | 'clean';
-export default function Aside({ variant }: { variant: Variant }) {
+export default function Aside() {
     const asideRef = useRef<HTMLElement>(null);
     const data: ResumeData['aside'] = (resume as ResumeData).aside;
 
@@ -94,22 +93,16 @@ export default function Aside({ variant }: { variant: Variant }) {
             ref={asideRef}
             className="w-[30%] bg-[#1a2e35] flex flex-col items-center overflow-visible"
         >
-            {variant === 'secure' && (
-                <header className="w-full flex min-h-[220px] items-center justify-center">
-                    <img
-                        src={import.meta.env.BASE_URL + data.profilePicture}
-                        alt="Foto de perfil"
-                        className="size-[150px] rounded-full border-[6px] border-white shadow-2xl"
-                    />
-                </header>
-            )}
+            <header className="w-full flex min-h-[220px] items-center justify-center">
+                <img
+                    src={import.meta.env.BASE_URL + data.profilePicture}
+                    alt="Foto de perfil"
+                    className="size-[150px] rounded-full border-[6px] border-white shadow-2xl"
+                />
+            </header>
             <div className="flex flex-col gap-6 px-6 overflow-y-hidden">
-                {data.sections.map(sec => {
-                    if (variant === 'secure' && sec.title === 'Contato' && sec.list) {
-                        sec = { ...sec, list: sec.list.filter(item => item.label !== 'WhatsApp') };
-                    }
-                    return (
-                        <section key={sec.title}>
+                {data.sections.map(sec => (
+                    <section key={sec.title}>
                         <h2 className={sec.title === 'Hobbies e Interesses' ? 'text-lg font-extrabold uppercase' : ''}>{sec.title}</h2>
                         {sec.paragraph && (
                             <ReactMarkdown

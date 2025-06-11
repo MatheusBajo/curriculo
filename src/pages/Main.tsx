@@ -5,15 +5,10 @@ import {useEffect, useRef} from "react";
 import ReactMarkdown from 'react-markdown'
 import resume from '../data/resume.json'
 import type { ResumeData } from '../utils/types'
-import type { Variant } from './Aside'
 
-export default function Main({ variant }: { variant: Variant }) {
+export default function Main() {
     const mainRef = useRef<HTMLElement>(null);
     const data: ResumeData['main'] = (resume as ResumeData).main;
-    const header = { ...data.header };
-    if (variant === 'secure') {
-        header.contacts = header.contacts.filter(c => !c.label.includes('95413'));
-    }
 
 
     useEffect(() => {
@@ -150,7 +145,7 @@ export default function Main({ variant }: { variant: Variant }) {
                 <div className="flex flex-grow items-center justify-between ">
                     <div className="flex flex-col items-start justify-center">
                         <h1 className="font-extrabold uppercase w-full text-foreground leading-[1.25]">
-                            {header.nameLines.map((line, i) => (
+                            {data.header.nameLines.map((line, i) => (
                                 <div key={i} className={`flex justify-between w-full text-[18.85pt]${i === 0 ? ' gap-3' : ''}`}> 
                                     {line.map(part => (
                                         <span key={part}>{part}</span>
@@ -160,14 +155,14 @@ export default function Main({ variant }: { variant: Variant }) {
                         </h1>
 
                         <p className="flex justify-between w-full text-[16pt] leading-[1] tracking-tight font-thin uppercase">
-                            {header.role.map(r => (
+                            {data.header.role.map(r => (
                                 <span key={r}>{r}</span>
                             ))}
                         </p>
 
                     </div>
                     <ul className="flex flex-col h-full divide-y-[1px] divide-background">
-                        {header.contacts.map(c => (
+                        {data.header.contacts.map(c => (
                             <li key={c.label} className="flex-1 flex items-center gap-2">
                                 <span className="inline-flex items-center justify-center size-[14px] bg-background rounded-[2px]">
                                     <img src={import.meta.env.BASE_URL + '/' + c.icon} alt={c.label} className="px-[3px] invert" />
