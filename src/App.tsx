@@ -4,11 +4,14 @@ import { PAGE_W, PAGE_H } from './utils/pageConstants';
 import FittedPdf from './FittedPdf';
 import { CERTIFICADOS } from './utils/certificates';
 import './utils/pdfWorker';
-import {useEffect} from "react";          // mantém o worker
+import {useEffect, useState} from "react";          // mantém o worker
 import { gsap } from 'gsap'          // coloque no topo de TODO arquivo que use gsap
+import Button from './components/ui/button';
+import CleanResume from './pages/CleanResume';
 
 
 export default function App() {
+    const [clean, setClean] = useState(false);
 
     useEffect(() => {
         // empurra tudo pro fim e força repaint síncrono
@@ -43,7 +46,16 @@ export default function App() {
 
     return (
         <main className="flex flex-col gap-2 print:gap-0">
+            <div className="fixed top-2 right-2 z-50">
+                <Button variant="outline" onClick={() => setClean(c => !c)}>
+                    {clean ? 'Voltar ao layout original' : 'Versão Clean'}
+                </Button>
+            </div>
+
             {/* Currículo */}
+            {clean ? (
+                <CleanResume />
+            ) : (
             <section
                 className="flex justify-center items-stretch
                    w-full md:w-dvw
@@ -68,6 +80,7 @@ export default function App() {
                     </foreignObject>
                 </svg>
             </section>
+            )}
 
             {/* Certificados */}
             {CERTIFICADOS.map(cert => (
