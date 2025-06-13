@@ -1,105 +1,60 @@
-/* =============== SPLITTEXT =============== */
-/* wrapper de linha: sempre transparente */
-.gsap-line{
-    display:block !important;
-    width:100% !important;
-    overflow:hidden !important;
-    text-align:justify !important;
-    text-align-last:justify !important;
-    -moz-text-align-last:justify !important;
-    line-height:inherit !important;
-    height:auto !important;
-    vertical-align:top !important;
-    position:relative !important;
-    background-color:transparent !important;
-}
-/* última linha volta pro alinhamento normal */
-.gsap-line:last-child{
-    text-align:left !important;
-    text-align-last:auto !important;
-}
-/* pseudo-span pra manter o justify nas linhas que não são a última */
-.gsap-line:not(:last-child)::after{
-    content:"" !important;
-    display:block !important;
-    width:100% !important;
-    height:0 !important;
-    font-size:0 !important;
-    line-height:0 !important;
-}
-/* fundo escuro só dentro do aside */
-aside .gsap-line{background-color:#1a2e35 !important;}
+/* gsap.css  ─ SOMENTE animação + estados iniciais  */
 
-/* cada palavra pode se mover sozinha */
-.gsap-word{display:inline-block;white-space:pre;}
-
-/* =============== ASIDE =============== */
-aside > div section h2{
-    position:relative;
-    --bar-scale:0;                 /* barra vertical começa zerada */
-}
-aside > div section h2::before{
-    content:"";
-    position:absolute;
-    left:1px;top:6px;bottom:4px;
-    width:0.25rem;
-    background:white;
-    transform-origin:top;
-    transform:scaleY(var(--bar-scale));
-}
-/* bullet custom na lista do aside */
-aside ul{list-style:none;padding-left:1.25rem;}
-aside li{position:relative;background:#1a2e35;}
-aside li::before{
-    content:"•";
-    position:absolute;
-    left:0;top:0.1em;
-    color:white;
+/* SplitText wrappers */
+.gsap-line {
+    display: block;
+    overflow: hidden;
+    text-align: justify;
+    text-align-last: justify;
 }
 
-/* parágrafos informativos (lado esquerdo) não são justify */
-.coluna-direita p:not(.text-justify) .gsap-line{
-    text-align:left !important;
-    text-align-last:auto !important;
+.gsap-line:last-child {
+    text-align: left;
+    text-align-last: auto;
 }
 
-/* borda-left das experiências: começa invisível */
-.section-exp{
-    border-left:2px solid transparent;
+.gsap-word {
+    display: inline-block;
+    white-space: pre;
 }
 
-/* linhas de competência (span + barra) começam invisíveis */
-.skills-row{
-    opacity:0;
-    transform:translateY(20px);
+/* estados que o GSAP altera */
+.section-exp {
+    border-left: 2px solid transparent;
 }
 
-/* coluna-esquerda começa invisível */
-.job-left p{
-    opacity:0;
-    transform:translateY(20px);
+/* borda que vai aparecer */
+.skills-row,
+.job-left p {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-/* borda-left começa invisível */
-.section-exp{
-    border-left:2px solid transparent;
+/* titulos que ganham linha crescente */
+.coluna-direita h2 {
+    --line-scale: 0;
+    position: relative;
+    border-bottom: none;
 }
 
-.coluna-direita h2{
-    position:relative;          /* novo */
-    border-bottom:none !important;
-    --line-scale:0;
+.coluna-direita h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform-origin: left center;
+    transform: scaleX(var(--line-scale));
 }
 
+/* barra do h2 do aside */
+aside section h2 {
+    --bar-scale: 0;
+}
 
-.coluna-direita h2::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-2px;
-    width:100%;
-    height:2px;
-    background:currentColor;
-    transform-origin:left center;
-    transform:scaleX(var(--line-scale));
+aside section h2::before {
+    transform-origin: top;
+    transform: scaleY(var(--bar-scale));
 }

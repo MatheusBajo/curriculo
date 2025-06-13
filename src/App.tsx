@@ -4,14 +4,38 @@ import { PAGE_W, PAGE_H } from './utils/pageConstants';
 import FittedPdf from './FittedPdf';
 import { CERTIFICADOS } from './utils/certificates';
 import './utils/pdfWorker';
-import {useEffect, useState} from "react";          // mantém o worker
-import { gsap } from 'gsap'          // coloque no topo de TODO arquivo que use gsap
-import Button from './components/ui/button';
+import {useEffect, useState} from "react";
+import { gsap } from 'gsap'
 import CleanResume from './pages/CleanResume';
+import ToggleSensitive from "./components/ToggleSensitive.tsx";
+import {Button} from "./components/ui/button.tsx";
 
 
 export default function App() {
-    const [clean, setClean] = useState(false);
+    // Detecta a rota inicial baseada no pathname
+    const [clean, setClean] = useState(() => {
+        return window.location.pathname.includes('/clean');
+    });
+
+    // Atualiza a URL e o estado quando clica no botão
+    const toggleLayout = () => {
+        const newClean = !clean;
+        setClean(newClean);
+
+        // Atualiza a URL
+        const newPath = newClean ? '/curriculo/clean' : '/curriculo/';
+        window.history.pushState({}, '', newPath);
+    };
+
+    useEffect(() => {
+        // Listener para mudanças de navegação (botões voltar/avançar)
+        const handlePopState = () => {
+            setClean(window.location.pathname.includes('/clean'));
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []);
 
     useEffect(() => {
         // empurra tudo pro fim e força repaint síncrono
@@ -46,16 +70,21 @@ export default function App() {
 
     return (
         <main className="flex flex-col gap-2 print:gap-0">
-            <div className="fixed top-2 right-2 z-50">
-                <Button variant="outline" onClick={() => setClean(c => !c)}>
-                    {clean ? 'Voltar ao layout original' : 'Versão Clean'}
+
+            <div className="fixed top-2 right-2 z-50 flex gap-2 print:hidden">
+                <Button
+                    id="button-layout"
+                    variant="outline"
+                    className="!bg-foreground !text-background hover:!bg-[#1a2e35]"
+                    onClick={toggleLayout}
+                >
+                    {clean ? 'Layout Original' : 'Versão ATS'}
                 </Button>
+                <ToggleSensitive/>
             </div>
 
+
             {/* Currículo */}
-            {clean ? (
-                <CleanResume />
-            ) : (
             <section
                 className="flex justify-center items-stretch
                    w-full md:w-dvw
@@ -64,7 +93,6 @@ export default function App() {
                    print:break-after-page"
             >
                 <svg
-                    /* largura sempre 100%; altura só cresce acima de md */
                     className="w-full h-auto md:h-full"
                     viewBox={`0 0 ${PAGE_W} ${PAGE_H}`}
                     preserveAspectRatio="xMidYMid meet"
@@ -74,16 +102,21 @@ export default function App() {
                             xmlns="http://www.w3.org/1999/xhtml"
                             className="page flex w-full h-full bg-white"
                         >
-                            <Aside />
-                            <Main />
+                            {clean ? (
+                                <CleanResume />
+                            ) : (
+                                <>
+                                    <Aside />
+                                    <Main />
+                                </>
+                            )}
                         </div>
                     </foreignObject>
                 </svg>
             </section>
-            )}
 
-            {/* Certificados */}
-            {CERTIFICADOS.map(cert => (
+            {/* Certificados - apenas no layout original */}
+            {!clean && CERTIFICADOS.map(cert => (
                 <section
                     key={cert.src}
                     className="flex justify-center items-stretch

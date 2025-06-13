@@ -142,29 +142,29 @@ export default function Main() {
         <main ref={mainRef} className="coluna-direita flex-1 bg-white flex flex-col px-6 overflow-hidden">
             {/*Cabeçalho: nome, cargo e contatos*/}
             <header className="flex flex-shrink-0 items-center gap-5 w-full min-h-[220px]">
-                <div className="flex flex-grow items-center justify-between ">
+                <div className="flex flex-grow items-center justify-between">
                     <div className="flex flex-col items-start justify-center">
-                        <h1 className="font-extrabold uppercase w-full text-foreground leading-[1.25]">
+                        <h1 className="font-extrabold uppercase w-full text-primary leading-[1.25]">
                             {data.header.nameLines.map((line, i) => (
-                                <div key={i} className={`flex justify-between w-full text-[18.85pt]${i === 0 ? ' gap-3' : ''}`}> 
+                                <div key={i} className={`flex justify-between w-full${i === 0 ? ' gap-3' : ''}`}>
                                     {line.map(part => (
-                                        <span key={part}>{part}</span>
+                                        <span className="!text-[18.85pt] text-primary" key={part}>{part}</span>
                                     ))}
                                 </div>
                             ))}
                         </h1>
 
-                        <p className="flex justify-between w-full text-[16pt] leading-[1] tracking-tight font-thin uppercase">
+                        <p className="flex justify-between w-full">
                             {data.header.role.map(r => (
-                                <span key={r}>{r}</span>
+                                <span className="!text-[15pt] leading-[1] text-primary tracking-[-0.25px] font-thin uppercase" key={r}>{r}</span>
                             ))}
                         </p>
 
                     </div>
-                    <ul className="flex flex-col h-full divide-y-[1px] divide-background">
+                    <ul className="flex flex-col h-full divide-y-[1px] divide-primary">
                         {data.header.contacts.map(c => (
-                            <li key={c.label} className="flex-1 flex items-center gap-2">
-                                <span className="inline-flex items-center justify-center size-[14px] bg-background rounded-[2px]">
+                            <li key={c.label} className="flex-1 flex items-center text-primary gap-2">
+                                <span className="inline-flex items-center justify-center size-[14px] bg-primary rounded-[2px]">
                                     <img src={import.meta.env.BASE_URL + '/' + c.icon} alt={c.label} className="px-[3px] invert" />
                                 </span>
                                 <span className="text-[10pt] font-bold">{c.label}</span>
@@ -184,7 +184,7 @@ export default function Main() {
                     {data.experiences.map(exp => (
                         <div className="flex job-row" key={exp.code}>
                             <div className="w-1/4 text-left pr-2 job-left">
-                                <p className="text-sm font-bold text-gray-600 uppercase">{exp.code}</p>
+                                <p className="text-sm font-bold text-primary/60 uppercase">{exp.code}</p>
                                 <p className="text-xs text-gray-500">{exp.location}</p>
                                 <p className="text-xs text-gray-500">{exp.period}</p>
                             </div>
@@ -220,7 +220,7 @@ export default function Main() {
                 <ReactMarkdown
                     components={{
                         p: ({...props}) => (
-                            <p className="text-justify font-normal text-[9pt] leading-[1.25]" {...props} />
+                            <p className="text-justify text-primary font-normal text-[9pt] leading-[1.25]" {...props} />
                         ),
                         strong: ({...props}) => <strong className="font-bold" {...props} />,
                     }}

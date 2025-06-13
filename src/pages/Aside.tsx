@@ -1,15 +1,17 @@
-// Aside.tsx
+// Aside.tsx - Solução 1: Adicionar configurações ao SplitText
 import {useEffect, useRef} from "react";
 import { gsap } from 'gsap'
 import SplitText from 'gsap/SplitText'
 import ReactMarkdown from 'react-markdown'
 import resume from '../data/resume.json'
 import type { ResumeData } from '../utils/types'
+import {useSensitive} from "../contexts/SensitiveContext.tsx";
+import {mask} from "../utils/mask.ts";
 
 export default function Aside() {
+    const { visivel } = useSensitive();                        // ← usa aqui
     const asideRef = useRef<HTMLElement>(null);
     const data: ResumeData['aside'] = (resume as ResumeData).aside;
-
 
     useEffect(() => {
         if (!asideRef.current) return;
@@ -41,13 +43,25 @@ export default function Aside() {
                         }, "<");
                 }
 
-                // 2) <p>: linhas mascaradas sobem (de oculto para visível)
+                // 2) <p>: SOLUÇÃO - Adicionar configurações para preservar elementos inline
                 const p = section.querySelector<HTMLElement>("p");
                 if (p) {
+                    // Opção 1: Configurar o SplitText para não quebrar em elementos inline
                     const splitP = new SplitText(p, {
                         type: "lines",
-                        linesClass: "gsap-line"
+                        linesClass: "gsap-line",
+                        // Preserva elementos inline como <strong>
+                        tag: "div",
+                        // Força o SplitText a respeitar a largura do container
+                        position: "relative"
                     });
+
+                    // Adiciona classe para controlar overflow
+                    splitP.lines.forEach(line => {
+                        line.style.whiteSpace = "normal";
+                        line.style.overflow = "visible";
+                    });
+
                     // define estado inicial oculto
                     gsap.set(splitP.lines, {
                         yPercent: 100,
@@ -87,7 +101,6 @@ export default function Aside() {
         return () => ctx.revert();
     }, []);
 
-
     return (
         <aside
             ref={asideRef}
@@ -100,16 +113,16 @@ export default function Aside() {
                     className="size-[150px] rounded-full border-[6px] border-white shadow-2xl"
                 />
             </header>
-            <div className="flex flex-col gap-6 px-6 overflow-y-hidden">
+            <div className="flex flex-col gap-5 w-[80%] ">
                 {data.sections.map(sec => (
                     <section key={sec.title}>
-                        <h2 className={sec.title === 'Hobbies e Interesses' ? 'text-lg font-extrabold uppercase' : ''}>{sec.title}</h2>
+                        <h2 className={sec.title}>{sec.title}</h2>
                         {sec.paragraph && (
                             <ReactMarkdown
                                 components={{
                                     p: ({...props}) => (
                                         <p
-                                            className={sec.title === 'Hobbies e Interesses' ? 'text-[9pt] font-medium leading-snug text-justify' : ''}
+                                            className={sec.title}
                                             {...props}
                                         />
                                     ),
@@ -120,29 +133,51 @@ export default function Aside() {
                             </ReactMarkdown>
                         )}
                         {sec.list && (
-                            <ul className="">
-                                {sec.list.map(item => (
-                                    <li key={item.label}>
-                                        <strong>{item.label}:</strong>{' '}
-                                        {item.url ? (
-                                            <a
-                                                className="underline print:no-underline text-blue-300 print:text-white/90"
-                                                href={item.url}
-                                                target="_blank"
-                                            >
-                                                {item.value}
-                                            </a>
-                                        ) : (
-                                            item.value
-                                        )}
-                                    </li>
-                                ))}
+                            <ul>
+                                {sec.list.map((it, idx) => {
+                                    if (it.private && !visivel) return null
+
+                                    const texto = visivel
+                                        ? it.private?.value ?? it.value ?? ''
+                                        : it.value ?? ''
+
+                                    if (!texto) return null
+
+                                    const mostrarLink = !!it.url
+
+                                    return (
+                                        <li
+                                            key={it.label || idx}
+                                            style={mostrarLink ? {
+                                                whiteSpace: 'nowrap',
+                                                overflow: 'visible',
+                                                position: 'relative'
+                                            } : undefined}
+                                        >
+                                            {it.label && (
+                                                <strong>
+                                                    {it.label}:{' '}
+                                                </strong>
+                                            )}
+
+                                            {mostrarLink ? (
+                                                <a
+                                                    href={it.url}
+                                                    className="text-blue-300 hover:text-blue-200 print:text-white underline"
+                                                >
+                                                    {texto}
+                                                </a>
+                                            ) : (
+                                                texto
+                                            )}
+                                        </li>
+                                    )
+                                })}
                             </ul>
                         )}
+
                     </section>
                 ))}
-
-
             </div>
         </aside>
     );

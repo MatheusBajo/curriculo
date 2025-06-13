@@ -4,70 +4,70 @@
     "sections": [
       {
         "title": "Sobre Mim",
-        "paragraph": "Graduando em **Análise e Desenvolvimento de Sistemas** (UAM) e formado em **Técnico em Informática**. Dedico-me principalmente a **Java/Spring/JavaFX**, **React com TypeScript & Tailwind**, criando desde aplicações desktop a sistemas e sites completos. Sou curioso, colaborativo e sempre procuro agregar valor onde atuo, compartilhando conhecimento e, mantendo a mente aberta para novas experiências e ideias."
+        "paragraph": "Desde 2025 Graduando **Análise e Desenvolvimento de Sistemas** (UAM) e formado em **Técnico em Informática**. Atualmente com 18, fazendo soluções _full-stack_ em **Java/Spring Boot** e **React + TypeScript**, sempre priorizando performance, UX e código limpo."
       },
       {
-        "title": "Detalhes Pessoais",
+        "title": "Detalhes e Contato",
         "list": [
           {
             "label": "Nome",
             "value": "Matheus Yoshiro de Santana Bajo"
           },
           {
+            "label": "Idade",
+            "value": "18 anos"
+          },
+          {
             "label": "End.",
-            "value": "R. José Salvador Pazzobom, 345 - Jaguaribe, Osasco, SP - 06050-070"
+            "value": "Osasco, SP",
+            "private": {
+              "value": "Osasco, SP - R. José Salvador Pazzobom, 345 - Jaguaribe - 06050-070"
+            }
           },
           {
             "label": "Nacionalidade",
-            "value": "Brasileiro, Natural de São Paulo"
+            "value": "",
+            "private": {
+              "value": "Brasileiro"
+            }
           },
           {
             "label": "Estado Civil",
-            "value": "Solteiro"
+            "value": "",
+            "private": {
+              "value": "Solteiro"
+            }
           },
           {
-            "label": "Gênero",
-            "value": "Masculino"
+            "label": "Telefone",
+            "value": "(11) 9 5413-9973"
           },
           {
-            "label": "Data de Nascimento",
-            "value": "24/01/2007"
-          }
-        ]
-      },
-      {
-        "title": "Contato",
-        "list": [
+            "label": "LinkedIn",
+            "value": "linkedin.com/in/matheusbajo",
+            "url": "https://www.linkedin.com/in/matheusbajo"
+          },
+          {
+            "label": "GitHub",
+            "value": "github.com/MatheusBajo",
+            "url": "https://github.com/MatheusBajo"
+          },
           {
             "label": "WhatsApp",
             "value": "(11) 9 5413-9973",
-            "url": "https://wa.me/5511954139973"
+            "url": "https://wa.me/5511954139973",
+            "private": true
           },
           {
             "label": "E-mail",
             "value": "matheusbajo@gmail.com",
             "url": "mailto:matheusbajo@gmail.com"
-          },
-          {
-            "label": "Instagram",
-            "value": "@yoshiro_.bajo",
-            "url": "https://www.instagram.com/yoshiro_.bajo"
-          },
-          {
-            "label": "LinkedIn",
-            "value": "Matheus Bajo",
-            "url": "https://www.linkedin.com/in/matheusbajo"
-          },
-          {
-            "label": "GitHub",
-            "value": "MatheusBajo",
-            "url": "https://github.com/MatheusBajo"
           }
         ]
       },
       {
         "title": "Hobbies e Interesses",
-        "paragraph": "Apaixonado por esportes: pratico **atletismo** há 6 anos e sigo uma rotina de **musculação** há 1 ano e meio, sempre alinhada a uma boa alimentação. Curto jogar **futebol** pra relaxar e manter o cárdio em dia. Nas horas livres, toco **violão há 9 anos!** Um hobby que continuo aperfeiçoando até hoje."
+        "paragraph": "Pratico **violão** há **9 anos** e gosto de **musculação**/**saúde geral** há **1,5 anos**. Também pratiquei **atletismo** por **3 anos** e estou no mundo dos **investimentos** há **3 anos**."
       }
     ]
   },
@@ -85,67 +85,59 @@
         ]
       ],
       "role": [
-        "Técnico",
-        "em",
-        "Informática"
+        "Desenvolvedor",
+        "Full-Stack"
       ],
       "contacts": [
         {
           "icon": "linkedin-in-brands.svg",
-          "label": "Matheus Bajo"
+          "label": "linkedin.com/in/matheusbajo"
         },
         {
           "icon": "envelope-solid.svg",
           "label": "matheusbajo@gmail.com"
         },
         {
-          "icon": "whatsapp-brands.svg",
-          "label": "(11) 9 5413-9973"
+          "icon": "github-brands.svg",
+          "label": "github.com/MatheusBajo"
         },
         {
-          "icon": "github-brands.svg",
-          "label": "MatheusBajo"
+          "icon": "whatsapp-brands.svg",
+          "label": "(11) 9 5413-9973"
         }
       ]
     },
     "experiences": [
       {
+        "code": "2.1 Projetos Web Freelance",
+        "location": "Autônomo",
+        "period": "2024 – Presente",
+        "title": "Desenvolvedor Front-End",
+        "paragraph": "Criei landing pages para **WeFlying** e **Gleide Fashion Hair** em **React/Next.js + Tailwind**, com Core Web Vitals verdes e geração de leads já no 1.º dia online."
+      },
+      {
+        "code": "2.0 Locação de Games",
+        "location": "Osasco – SP",
+        "period": "2019 – Presente",
+        "title": "Desenvolvedor Full-Stack",
+        "paragraph": "Automatizei orçamentos via **JavaFX + MySQL**, cortando o tempo de 5 min para <30 s, e criei frontend em **React TSX + Tailwind + GSAP** e API **Spring Boot** para logística e finanças."
+      },
+      {
         "code": "1.0 Canal YouTube",
         "location": "Online",
         "period": "2015 – 2020",
         "title": "Criador de Conteúdo",
-        "paragraph": "Iniciei meu canal de projetos eletrônicos aos **8 anos** (2015) e atingi mais de **40 mil visualizações** e **900 inscritos**. Essa experiência consolidou minhas habilidades de **roteiro, gravação, edição de vídeo e comunicação**. Encerrei o canal em 2020, mas sigo usando essas técnicas em edições pontuais."
-      },
-      {
-        "code": "2.0 Locação de Games",
-        "location": "Osasco – São Paulo",
-        "period": "2019 – Presente",
-        "title": "Desenvolvedor Full Stack / Técnico de TI",
-        "paragraph": "Criei sistema de orçamentos em **JavaFX + MySQL** que reduziu o tempo de **5 min** para **~30s**, gerando até 5 propostas diferentes. Desenvolvi site responsivo em **React TSX + Tailwind + GSAP** e configurei um ** servidor** com **Windows Server 2019** e desenvolvi um **sistema** em grupo com **Spring Boot** para melhor controle logístico e financeiro. Ofereço suporte técnico e faço manutenção diária em PCs, redes e fliperamas."
-      },
-      {
-        "code": "2.1 WeFlying",
-        "location": "Freelancer",
-        "period": "2024",
-        "title": "Desenvolvedor Front End",
-        "paragraph": "Fiz um site para a empresa de marketing **WeFlying** usando **Vite Vanilla + Tailwind**, focando em leads, performance e SEO completo."
-      },
-      {
-        "code": "2.2 Gleide Fashion Hair",
-        "location": "Osasco – São Paulo",
-        "period": "2024 – Presente",
-        "title": "Desenvolvedor Web",
-        "paragraph": "Criei landing page responsiva e dou manutenção básica em HTML, CSS e JavaScript. Auxilio em campanhas de Google Ads."
+        "paragraph": "Produzi vídeos de projetos eletrônicos com um vídeo de destaque com **+40.000 visualizações**, refinando roteiro, edição e comunicação. Dando início à minha *jornada* de desenvolvimento."
       }
     ],
-    "qualifications": "Desenvolvedor full stack com ênfase em **Java / Spring Boot** no back-end e **JavaFX, React com TypeScript e Tailwind** no front-end. Experiência com **modelagem MySQL**, APIs REST e versionamento **Git / GitHub**. Conhecimento sólido em **HTML, CSS, JavaScript/TypeScript**. Nos cursos da Alura aprofundei **orientação a objetos** (POO) **em Java**, construção de APIs REST e boas práticas de arquitetura com Spring Boot. Também atuo como gestor de tráfego com noções de **Google Ads** e **Facebook Ads**. **Investidor** ativo em **ações** desde 2020, focado em visão de longo prazo.",
+    "qualifications": "Foco em **Java/Spring Boot** (back-end) e **React + TypeScript** (front-end). Experiência com **MySQL**, APIs REST, CI/CD (GitHub Actions) e UX responsivo. Aprendo rápido e entrego valor desde cedo.",
     "skills": [
       {
-        "label": "HTML & CSS",
+        "label": "Tailwind CSS",
         "pct": "95%"
       },
       {
-        "label": "Tailwind CSS",
+        "label": "HTML & CSS",
         "pct": "95%"
       },
       {
@@ -154,25 +146,17 @@
       },
       {
         "label": "Java & Spring Boot",
-        "pct": "60%"
-      },
-      {
-        "label": "Manutenção",
-        "pct": "80%"
-      },
-      {
-        "label": "Google Ads & SEO",
-        "pct": "50%"
+        "pct": "70%"
       },
       {
         "label": "Git / GitHub",
-        "pct": "40%"
+        "pct": "60%"
       },
       {
         "label": "MySQL / SQL",
-        "pct": "30%"
+        "pct": "40%"
       }
     ],
-    "footerDate": "26/05/2025"
+    "footerDate": "13/06/2025"
   }
 }

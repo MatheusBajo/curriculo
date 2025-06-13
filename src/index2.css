@@ -1,0 +1,317 @@
+/*@import "tailwindcss";*/
+
+/*.page {*/
+/*    !* nenhum width/height/ratio aqui — fica tudo no inline-style + JS *!*/
+/*    background: white;*/
+/*}*/
+
+/*@page {*/
+/*    size: A4 portrait;*/
+/*    margin: 0;*/
+/*}*/
+
+/*@media print {*/
+/*    * {*/
+/*        animation: none !important;*/
+/*        transition: none !important;*/
+/*        -webkit-print-color-adjust: exact !important; !* Chrome, Safari *!*/
+/*        print-color-adjust: exact !important;        !* Firefox *!*/
+/*    }*/
+
+/*    body {*/
+/*        background: #fff !important;           !* some o azul-escuro *!*/
+/*    }*/
+
+/*    !* raizão que recebe o scale() *!*/
+/*    .screen-scale {*/
+/*        transform: none !important;            !* remove o zoom *!*/
+/*    }*/
+
+/*    !* cada folha A4 *!*/
+/*    .page {*/
+/*        width: 210mm !important;*/
+/*        height: 297mm !important;*/
+/*        box-shadow: none !important;           !* sem sombra *!*/
+/*        background: #fff !important;*/
+/*        page-break-after: always;              !* quebra de página *!*/
+/*    }*/
+
+/*    !* qualquer classe usada nos tweens *!*/
+/*    .gsap-line,*/
+/*    .gsap-word,*/
+/*    .skills-row,*/
+/*    .job-left p,*/
+/*    .section-exp {*/
+/*        opacity: 1 !important;*/
+/*        transform: none !important;*/
+/*    }*/
+/*    !* se overflow cortar coisa, mate aqui *!*/
+/*    aside,*/
+/*    main,*/
+/*    .page,*/
+/*    svg,*/
+/*    foreignObject {*/
+/*        overflow: visible !important;*/
+/*    }*/
+/*}*/
+
+
+
+
+/*!*Base Aside*!*/
+/*@layer base {*/
+/*    aside > div section h2 {*/
+/*        @apply !text-[16pt] pl-4 mb-2 text-white font-extrabold uppercase relative;*/
+/*    }*/
+
+/*    aside > div section h2::before {*/
+/*        content: "";*/
+/*        position: absolute;*/
+/*        left: 1px;*/
+/*        top: 6px;*/
+/*        bottom: 4px;*/
+/*        width: 0.25rem;*/
+/*        background: white;*/
+/*    }*/
+
+/*    aside > div section p {*/
+/*        @apply !text-[8pt] !font-normal text-gray-300 print:text-white text-justify relative;*/
+/*    }*/
+
+/*    aside > div section ul {*/
+/*        @apply !text-[8pt] list-disc list-outside pl-4 marker:text-white text-gray-300 print:text-white;*/
+/*    }*/
+
+/*    aside > div section strong, b {*/
+/*        @apply text-white;*/
+/*    }*/
+
+/*    aside > div section p::first-letter {*/
+/*        padding-left: 16px;*/
+/*    }*/
+/*}*/
+
+/*!*Base Page*!*/
+/*@layer base {*/
+/*    .coluna-direita h2 {*/
+/*        @apply text-[16pt] font-bold border-b-2 border-primary mb-4 uppercase;*/
+/*    }*/
+
+/*    .coluna-direita > section > div > div > p {*/
+/*    }*/
+
+/*    .coluna-direita .section-exp p {*/
+/*        @apply text-justify font-normal text-[9pt] leading-[1.25];*/
+/*    }*/
+
+/*    .coluna-direita .section-exp p strong, b {*/
+/*        @apply font-bold;*/
+/*    }*/
+/*}*/
+
+
+/*!* ==== IMPRESSÃO ==== *!*/
+/*@page {*/
+/*    size: A4;*/
+/*    margin: 10mm;*/
+/*}*/
+
+/*!* Classe utilitária para títulos de seção *!*/
+/*.sec-title {*/
+/*    @apply text-[12pt] font-bold mb-1 border-b border-gray-300 text-primary;*/
+/*}*/
+
+/*@media print {*/
+/*    #button-layout {*/
+/*        display: none !important; !* esconde o botão de layout *!*/
+/*    }*/
+
+/*    * {*/
+/*        text-decoration: none;*/
+/*    }*/
+
+/*    .page {*/
+/*        transform: none !important;*/
+/*    }*/
+
+/*    .page {*/
+/*        transform: none !important;*/
+/*        width: 210mm !important;*/
+/*        height: 297mm !important;*/
+/*        box-shadow: none;*/
+/*        page-break-after: always;*/
+/*    }*/
+
+/*    html, body {*/
+/*        margin: 0;*/
+/*        padding: 0;*/
+/*    }*/
+
+/*}*/
+
+
+
+
+
+/*    :root {*/
+/*        --background: 0 0% 100%;*/
+/*        --foreground: 240 10% 3.9%;*/
+
+/*        --background-primary: 0, 0%, 100%; !* Cor do fundo *!*/
+/*        --background-base: 0, 0%, 96%;  !* Cor base dos paineis *!*/
+/*        --background-card: 0, 0%, 86%; !* Cor de fundo de cards *!*/
+/*        --background-secondary: 240 3.7% 84.1%; !* Cor de fundo secundária *!*/
+/*        --background-modal: 240 10% 96.1%; !* Cor de fundo de modais *!*/
+
+/*        --card: 0 0% 100%;*/
+/*        --card-foreground: 0 0% 3.9%;*/
+/*        --popover: 0 0% 100%;*/
+/*        --popover-foreground: 0 0% 3.9%;*/
+
+/*        --yellow: 31, 43%, 29%;*/
+
+/*        --primary: 45 7.84% 20%;*/
+/*        --primary-foreground: 0 0% 98%;*/
+/*        --primary-blue: 221.2 83.2% 53.3%;*/
+/*        --primary-red: 1.36 77.19% 55.29%;*/
+/*        --primary-yellow: 50 83.2% 53.3%;*/
+/*        --primary-green: 122.42 39.44% 49.22%;*/
+/*        --primary-purple: 280 83.2% 53.3%;*/
+
+/*        --secondary: 0 0% 96.1%;*/
+/*        --secondary-foreground: 0 0% 9%;*/
+/*        --muted: 0 0% 96.1%;*/
+/*        --muted-foreground: 0 0% 45.1%;*/
+/*        --accent: 0 0% 96.1%;*/
+/*        --accent-foreground: 0 0% 9%;*/
+/*        --destructive: 0 84.2% 60.2%;*/
+/*        --destructive-foreground: 0 0% 98%;*/
+/*        --border: 0 0% 89.8%;*/
+/*        --input: 0 0% 89.8%;*/
+/*        --ring: 0 0% 3.9%;*/
+/*        --radius: 0.5rem;*/
+/*        --chart-1: 12 76% 61%;*/
+/*        --chart-2: 173 58% 39%;*/
+/*        --chart-3: 197 37% 24%;*/
+/*        --chart-4: 43 74% 66%;*/
+/*        --chart-5: 27 87% 67%;*/
+/*    }*/
+
+/*    .dark {*/
+/*        --background: 240 10% 3.9%;*/
+/*        --foreground: 0 0% 98%;*/
+
+/*        --background-primary: 0, 0%, 0%; !* Cor do fundo *!*/
+/*        --background-base: 0, 0%, 7%;  !* Cor base dos paineis *!*/
+/*        --background-card: 0, 0%, 14%; !* Cor de fundo de cards *!*/
+/*        --background-secondary: 240 3.7% 15.9%; !* Cor de fundo secundária *!*/
+/*        --background-modal: 240 10% 3.9%; !* Cor de fundo de modais *!*/
+
+
+/*        --card: 0 0% 3.9%;*/
+/*        --card-foreground: 0 0% 98%;*/
+/*        --popover: 0 0% 3.9%;*/
+/*        --popover-foreground: 0 0% 98%;*/
+
+/*        --yellow: 47, 96%, 62%;*/
+
+/*        --primary: 45 7.84% 20%;*/
+/*        --primary-foreground: 0 0% 9%;*/
+/*        --primary-blue: 221.2 83.2% 53.3%;*/
+/*        --primary-red: 1.36 77.19% 55.29%;*/
+/*        --primary-yellow: 50 83.2% 53.3%;*/
+/*        --primary-green: 122.42 39.44% 49.22%;*/
+/*        --primary-purple: 280 83.2% 53.3%;*/
+
+/*        --secondary: 0 0% 14.9%;*/
+/*        --secondary-foreground: 0 0% 98%;*/
+/*        --muted: 0 0% 14.9%;*/
+/*        --muted-foreground: 0 0% 63.9%;*/
+/*        --accent: 0 0% 14.9%;*/
+/*        --accent-foreground: 0 0% 98%;*/
+/*        --destructive: 0 62.8% 30.6%;*/
+/*        --destructive-foreground: 0 0% 98%;*/
+/*        --border: 0 0% 14.9%;*/
+/*        --input: 0 0% 14.9%;*/
+/*        --input-hover: 240 3.7% 30%;*/
+/*        --ring: 0 0% 83.1%;*/
+/*        --chart-1: 220 70% 50%;*/
+/*        --chart-2: 160 60% 45%;*/
+/*        --chart-3: 30 80% 55%;*/
+/*        --chart-4: 280 65% 60%;*/
+/*        --chart-5: 340 75% 55%;*/
+/*    }*/
+
+/*@layer base {*/
+/*    #root {*/
+/*        width: 100%;*/
+/*        height: 100%;*/
+/*    }*/
+
+/*    * {*/
+/*        @apply border-border;*/
+/*    }*/
+
+/*    body, html {*/
+/*        @apply bg-gray-900 text-foreground;*/
+/*        font-family: 'Segoe UI';*/
+/*        margin: 0;*/
+/*        padding: 0;*/
+/*        width: 100%;*/
+/*        height: 100%;*/
+/*        box-sizing: border-box;*/
+/*        font-synthesis-weight: none;*/
+/*        text-rendering: optimizeLegibility;*/
+/*    }*/
+
+/*}*/
+
+/*.container-wrapper {*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    max-width: 1400px;*/
+/*    width: 100%;*/
+/*}*/
+
+
+/*@media (min-width: 1800px) {*/
+/*    .container-wrapper {*/
+/*        max-width: 1536px;*/
+/*    }*/
+/*}*/
+
+
+/*@layer base {*/
+/*  * {*/
+/*    @apply border-border outline-ring/50;*/
+
+/*    }*/
+/*  body {*/
+/*    @apply text-primary overflow-x-hidden max-h-dvh;*/
+
+/*    }*/
+
+/*}*/
+
+/*.scrollbar-hide::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
+
+/*.scrollbar-hide {*/
+
+
+/*    -ms-overflow-style: none;  !* Para o IE e Edge *!*/
+/*    scrollbar-width: none;  !* Para o Firefox *!*/
+/*}*/
+
+
+
+/*@layer base {*/
+/*  * {*/
+/*    @apply border-border;*/
+/*    }*/
+/*  body {*/
+/*    @apply bg-background text-foreground;*/
+/*    }*/
+/*}*/
+

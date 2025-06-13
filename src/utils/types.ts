@@ -1,8 +1,10 @@
-export interface ListItem {
-    label: string;
-    value: string;
-    url?: string;
+type ListItem = {
+    label: string
+    url?: string
+    value?: string          // público
+    private?: { value: string }
 }
+
 
 export interface Section {
     title: string;
